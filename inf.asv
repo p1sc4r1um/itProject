@@ -1,0 +1,20 @@
+function mutual_information = inf(query, target)
+    mat = zeros(11,11);
+    entra = minLimit(query);
+    entrab = 0;
+    for i=1:length(query)
+        mat(query(i)+1,target(i)+1) = mat(query(i)+1,target(i)+1) + 1;
+    end
+    totalmat = length(query);
+    for i=1:11
+        for j=1:11
+            if(mat(i,j)~=0 && sum(target==j) ~=0 && sum(query==i)~=0)
+                pij = (mat(i,j)/totalmat);
+                entrab = entrab + pij*log2(((mat(i,j)/totalmat)/(sum(target==j)/length(target)))/(sum(query==i)/length(query)));
+                disp(entrab);
+            end
+        end
+    end
+    entrab = entrab * -1;
+    mutual_information = entra-entrab;
+end

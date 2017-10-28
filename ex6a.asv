@@ -1,0 +1,6 @@
+function array = ex6a(query, target, alf)
+    array = [];
+    for i=1:length(target)-length(query)-1
+        aux = inf(query, target
+        array = [array, 
+end
